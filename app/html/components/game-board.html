@@ -1,0 +1,36 @@
+<link rel="import" href="../lib/polymer/polymer.html">
+<link rel="import" href="game-card.html">
+
+<polymer-element name="game-board" attributes="cards">
+<template>
+  <style>
+    :host {
+      display: block;
+      width: 1800px;
+    }
+    game-card {
+      margin: 3px;
+    }
+  </style>
+
+  <div layout horizontal wrap center >
+    <template repeat="{{card in cards}}">
+      <game-card>
+      <img src="{{card.img}}">
+      <h2>{{card.title}}</h2>
+      <p>{{card.text}}</p>
+    </game-card>
+  </template>
+</div>
+</template>
+<script>
+  Polymer('game-board', {
+      // initialize the element's model
+      created: function() {
+        this.cards = [{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},
+        {title:"tester"},{title:"tester"},{title:"tester"},{title:"tester"},{title:"tester2"}];
+      }
+});
+</script>
+
+</polymer-element>
