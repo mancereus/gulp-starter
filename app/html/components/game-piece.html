@@ -1,0 +1,74 @@
+<link rel="import" href="../lib/polymer/polymer.html">
+<link rel="import" href="../lib/core-icon/core-icon.html">
+<link rel="import" href="../lib/paper-ripple/paper-ripple.html">
+<link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
+<polymer-element name="game-piece" attributes="img" draggeble="true">
+<template>
+	<style>
+		:host {
+			position: absolute;
+			width: 112px;
+			height: 112px;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			color: #fff;
+			overflow: hidden;
+			transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+			transition-delay: 0.2s;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+			cursor: move;
+			border: 3px solid green;
+			background-color: white;
+			z-index: 2000;
+		}
+		img {
+		}
+	</style>
+	<div name="piece" class="fab green" on-click="{{clicker}}" draggable="true" on-dragStart="{{dragStart}}"  on-dragEnter="{{dragIt}}"  on-dragOver="{{allowDrop}}" on-dragEnd="{{dragStop}}">
+		<core-drag-drop></core-drag-drop>
+		<img src="{{img}}">	
+	</core-icon>
+	<paper-ripple class="circle recenteringTouch" fit=""></paper-ripple>
+</div>
+</template>
+<script>
+	Polymer("game-piece", {	
+		ready: function() {
+			console.log("game-piece ready ");
+
+		},
+		enteredView: function() {
+			console.log("game-piece ", this.name, " inserted" );
+			this.super( );
+		},
+		dragStart: function(ev) {
+
+			ev.dataTransfer.effectAllowed='none';
+			ev.dataTransfer.setData("text/plain",this.id);
+			console.log("dragStart",  ev.dataTransfer.getData("Text"));
+			// ev.dragInfo.drag=true;
+		},
+		dragIt: function(ev) {
+		},
+		clicker: function(ev) {
+			ev.preventDefault();
+		    ev.stopPropagation(); 
+			return false; 
+		},
+		allowDrop: function(ev){
+			ev.preventDefault();
+			return false; 
+		},
+		dragStop: function(ev){
+			ev.preventDefault();
+			// this.style.left = this.style.left/2 + (event.pageX)+ 'px';
+			// this.style.top = this.style.top/2 + (event.pageY) + 'px';
+			// console.log("dragStop",ev,ev.target,this.style );
+		},
+		drop: function (dragInfo) {
+			console.log("drop",dragInfo);
+		}
+	});
+</script>
+</polymer-element>
