@@ -2,15 +2,15 @@
 <link rel="import" href="../lib/core-icon/core-icon.html">
 <link rel="import" href="../lib/paper-ripple/paper-ripple.html">
 <link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
-<polymer-element name="game-piece" attributes="img" draggeble="true">
+<polymer-element name="game-piece" attributes="img"  >
 <template>
 	<style>
 		:host {
 			position: absolute;
 			width: 112px;
 			height: 112px;
-			top: 0;
-			left: 0;
+			top: 40px;
+			left: 20px;
 			border-radius: 50%;
 			color: #fff;
 			overflow: hidden;
@@ -25,49 +25,41 @@
 		img {
 		}
 	</style>
-	<div name="piece" class="fab green" on-click="{{clicker}}" draggable="true" on-dragStart="{{dragStart}}"  on-dragEnter="{{dragIt}}"  on-dragOver="{{allowDrop}}" on-dragEnd="{{dragStop}}">
-		<core-drag-drop></core-drag-drop>
+	<core-drag-drop></core-drag-drop> 
+	<div name="piece" class="fab green" draggeble="true" on-click="{{clicker}}">
 		<img src="{{img}}">	
-	</core-icon>
-	<paper-ripple class="circle recenteringTouch" fit=""></paper-ripple>
-</div>
+	</div>
 </template>
 <script>
+	function drop(dragInfo) {
+		var color = dragInfo.avatar.style.borderColor;
+		var dropTarget = dragInfo.event.relatedTarget;
+		var f = dragInfo.framed;
+		var d = dragInfo.avatar.children[0];
+		d.style.left = f.x  + 'px';
+		d.style.top = f.y + 'px';
+		d.style.position = "absolute";
+
+		document.body.appendChild(d);
+	}
 	Polymer("game-piece", {	
-		ready: function() {
-			console.log("game-piece ready ");
-
-		},
-		enteredView: function() {
-			console.log("game-piece ", this.name, " inserted" );
-			this.super( );
-		},
-		dragStart: function(ev) {
-
-			ev.dataTransfer.effectAllowed='none';
-			ev.dataTransfer.setData("text/plain",this.id);
-			console.log("dragStart",  ev.dataTransfer.getData("Text"));
-			// ev.dragInfo.drag=true;
-		},
-		dragIt: function(ev) {
-		},
+		
 		clicker: function(ev) {
 			ev.preventDefault();
-		    ev.stopPropagation(); 
+			ev.stopPropagation(); 
 			return false; 
 		},
-		allowDrop: function(ev){
-			ev.preventDefault();
-			return false; 
-		},
-		dragStop: function(ev){
-			ev.preventDefault();
-			// this.style.left = this.style.left/2 + (event.pageX)+ 'px';
-			// this.style.top = this.style.top/2 + (event.pageY) + 'px';
-			// console.log("dragStop",ev,ev.target,this.style );
-		},
-		drop: function (dragInfo) {
-			console.log("drop",dragInfo);
+		ready: function() {
+			console.log("game-piece ready ");
+			this.addEventListener('drag-start', function(e) {
+				var dragInfo = e.detail;
+				var d = this;
+				d.style.left = '0px';
+				d.style.top = '0px';
+				e.detail.avatar.appendChild(d);
+				dragInfo.drag = function() {};
+				dragInfo.drop = drop;
+			});
 		}
 	});
 </script>

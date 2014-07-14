@@ -66,9 +66,12 @@
 		toggle: function() {
 			var card = this.$.card;
 			card.selected = (card.selected + 1) % 2;
-			if(card.selected == 1)
+			if(card.selected == 1) {
 				this.$.player.cancel();
 				this.$.player.speak();
+			} else {
+				this.$.player.cancel();
+			}
 		}
 	});
 </script>
