@@ -35,27 +35,27 @@
 		}
 	</style>
 	<core-pages id="card" on-click="{{ toggle }}" >
-	<div><img src="../img/back.png" style="width: 200px; height: 300px"></div>
-		<div class="card-header" >
-			<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
-			<div layout vertical center>
+	<div><img flex self-stretch src="../img/back.png" style="width: 99%; height: 300px"></div>
+	<div class="card-header" >
+		<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
+		<div layout vertical center>
 			<h2>{{titleText}}</h2>
-		    <img class="picture" src="img/{{imgSrc}}.png">
-      
-			<div style="width:166px"><p>{{text}}</p></div>
+			<img class="picture" src="img/{{imgSrc}}.png" style="width:60%;height:100px"/>
+			
+			<div style="width:90%"><p>{{text}}</p></div>
 			<template if="{{ vertic }}">
-			<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
+				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
 			</template>
 			<template if="{{ horiz }}">
-			<div fit style="top: 266px;"><img src="../img/horiz.jpg" style="height:30px; width: 196px;"alt=""></div>
+				<div fit style="top: 266px;"><img src="../img/horiz.jpg" style="height:30px; width: 196px;"alt=""></div>
 			</template>
 			<template if="{{ symbol }}">
 				<game-piece img="../img/{{imgSrc}}.png"></game-piece>
 			</template>
-			</div>
 		</div>
-	</core-pages>
-	<paper-shadow z="2"></paper-shadow>
+	</div>
+</core-pages>
+<paper-shadow z="2"></paper-shadow>
 </template>
 <script>
 	Polymer("game-card", {

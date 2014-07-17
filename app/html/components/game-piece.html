@@ -26,7 +26,7 @@
 		}
 	</style>
 	<core-drag-drop></core-drag-drop> 
-	<div name="piece" class="fab green" draggeble="true" on-click="{{clicker}}">
+	<div name="piece" class="fab green" draggable="true" on-click="{{clicker}}">
 		<img src="{{img}}">	
 	</div>
 </template>
@@ -39,11 +39,26 @@
 		d.style.left = f.x  + 'px';
 		d.style.top = f.y + 'px';
 		d.style.position = "absolute";
-
-		document.body.appendChild(d);
+		var card = findParentNode("GAME-CARD", dropTarget);
+		if (card != 'undefined' && card.selected == 1)
+			card.appendChild(d);
+		else  {
+			d.style.left = f.pageX  + 'px';
+			d.style.top = f.pageY + 'px';
+			document.body.appendChild(d);
+		}
+	}
+	function findParentNode(tagName, childObj) {
+		var testObj = childObj.parentNode;
+		while(testObj.tagName != tagName) {
+			testObj = testObj.parentNode;
+			if (testObj == null)
+				return document.body;
+		}
+		return testObj;
 	}
 	Polymer("game-piece", {	
-		
+
 		clicker: function(ev) {
 			ev.preventDefault();
 			ev.stopPropagation(); 
