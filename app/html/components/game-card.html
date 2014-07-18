@@ -41,7 +41,7 @@
 		<div layout vertical center>
 			<h2>{{titleText}}</h2>
 			<img class="picture" src="img/{{imgSrc}}.png" style="width:60%;height:100px"/>
-			
+
 			<div style="width:90%"><p>{{text}}</p></div>
 			<template if="{{ vertic }}">
 				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
@@ -65,13 +65,14 @@
 		img: "",
 		toggle: function() {
 			var card = this.$.card;
-			card.selected = (card.selected + 1) % 2;
-			if(card.selected == 1) {
+			if(card.selected == 0) {
 				this.$.player.cancel();
 				this.$.player.speak();
 			} else {
 				this.$.player.cancel();
 			}
+			card.selected = 1;//(card.selected + 1) % 2;
+			
 		}
 	});
 </script>
