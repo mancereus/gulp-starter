@@ -1,7 +1,6 @@
 <link rel="import" href="../lib/polymer/polymer.html">
 <link rel="import" href="../lib/core-icon/core-icon.html">
 <link rel="import" href="../lib/paper-ripple/paper-ripple.html">
-<link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
 <polymer-element name="game-piece" attributes="img"  >
 <template>
 	<style>
@@ -9,8 +8,8 @@
 			position: absolute;
 			width: 112px;
 			height: 112px;
-			top: 40px;
-			left: 20px;
+			top: -200px;
+			left: 0px;
 			border-radius: 50%;
 			color: #fff;
 			overflow: hidden;
@@ -25,23 +24,11 @@
 		img {
 		}
 	</style>
-	<core-drag-drop></core-drag-drop> 
 	<div name="piece" class="fab green" draggable="true" on-click="{{clicker}}">
 		<img src="{{img}}">	
 	</div>
 </template>
 <script>
-	function gamePieceDrop(dragInfo) {
-		console.log("game-piece drop");
-		var color = dragInfo.avatar.style.borderColor;
-		var dropTarget = dragInfo.event.relatedTarget;
-		var f = dragInfo.framed;
-		var d = dragInfo.avatar.children[0];
-		d.style.left = f.x  + 'px';
-		d.style.top = f.y + 'px';
-		d.style.position = "absolute";
-    	dropTarget.appendChild(d);
-	}
 	Polymer("game-piece", {	
 
 		clicker: function(ev) {
@@ -51,15 +38,7 @@
 		},
 		ready: function() {
 			console.log("game-piece ready ");
-			this.addEventListener('drag-start', function(e) {
-				var dragInfo = e.detail;
-				var d = this;
-				d.style.left = '0px';
-				d.style.top = '0px';
-				e.detail.avatar.appendChild(d);
-				dragInfo.drag = function() {};
-				dragInfo.drop = gamePieceDrop;
-			});
+			var draggie = new Draggabilly( this );
 		}
 	});
 </script>

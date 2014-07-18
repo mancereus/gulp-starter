@@ -1,7 +1,6 @@
 <link rel="import" href="../lib/polymer/polymer.html">
 <link rel="import" href="../lib/core-icon/core-icon.html">
 <link rel="import" href="../lib/paper-ripple/paper-ripple.html">
-<link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
 <polymer-element name="game-meeple" attributes="img"  >
 <template>
 	<style>
@@ -20,38 +19,10 @@
 		}
 	</style>
 	<div draggable="true">
-		<core-drag-drop></core-drag-drop> 
 		<core-icon src="../img/Jack.png" size="50" style="border: 3px solid blue"></core-icon>
 	</div>
 </template>
 <script>
-	function gameMeepleDrop(dragInfo) {
-		console.log("game-meeple drop");
-		var color = dragInfo.avatar.style.borderColor;
-		var dropTarget = dragInfo.event.relatedTarget;
-		var f = dragInfo.framed;
-		var d = dragInfo.avatar.children[0];
-		d.style.left = f.x  + 'px';
-		d.style.top = f.y + 'px';
-		d.style.position = "absolute";
-		var card = findParentNode("GAME-CARD", dropTarget);
-		if (card != 'undefined' && card.selected == 1)
-			card.appendChild(d);
-		else  {
-			d.style.left = f.pageX  + 'px';
-			d.style.top = f.pageY + 'px';
-			document.body.appendChild(d);
-		}
-	}
-	function findParentNode(tagName, childObj) {
-		var testObj = childObj.parentNode;
-		while(testObj.tagName != tagName) {
-			testObj = testObj.parentNode;
-			if (testObj == null)
-				return document.body;
-		}
-		return testObj;
-	}
 	Polymer("game-meeple", {	
 
 		clicker: function(ev) {
@@ -61,15 +32,7 @@
 		},
 		ready: function() {
 			console.log("game-meeple ready ");
-			this.addEventListener('drag-start', function(e) {
-				var dragInfo = e.detail;
-				var d = this;
-				d.style.left = '0px';
-				d.style.top = '0px';
-				e.detail.avatar.appendChild(d);
-				dragInfo.drag = function() {};
-				dragInfo.drop = gameMeepleDrop;
-			});
+			var draggie = new Draggabilly( this );
 		}
 	});
 </script>
