@@ -27,108 +27,108 @@
   StopIteration.message = 'StopIteration';
 
   arrayLikeIterator = function (arrayLike) {
-      var i = 0;
-      return {
-          'next': function () {
-              if (i >= arrayLike.length) {
-                  throw StopIteration;
-              }
-              return arrayLike[i++];
-          }
-      };
+    var i = 0;
+    return {
+      'next': function () {
+        if (i >= arrayLike.length) {
+          throw StopIteration;
+        }
+        return arrayLike[i++];
+      }
+    };
   };
   function shuffle(o){ 
-      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
   };
   Polymer('game-board', {
       // initialize the element's model
       created: function() {
         var initcards =  [
-            {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
-            {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
-            {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
-            {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
-            {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift",hor: "true"},
-            {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift",ver: "true"},
-            {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift"},
-            {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift"},
-            {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
-            {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
-            {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
-            {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
-            {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein", pagebreak: "pagebreak"},
-            {name: "Boot", Aktion: "Bring das Boot zum Fluss, um das Abenteuer zu verlassen.", hor: true, imgclass:"symbol"},
-            {name: "Rucksack", Aktion: "Mit dem Rucksack kannst du 3 Dinge mehr tragen.",ver: "true", imgclass:"symbol"},
-            {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",hor: "true", imgclass:"symbol"},
-            {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",hor: "true", imgclass:"symbol"},
-            {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",ver: "true", imgclass:"symbol"},
-            {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",ver: "true", imgclass:"symbol"},
-            {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu uf die Wand.",hor: "true",ver: "true", imgclass:"symbol"},
-            {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",hor: "true", imgclass:"symbol"},
-            {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit springen.",ver: "true", imgclass:"symbol"},
-            {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit springen.",hor: "true",ver: "true", imgclass:"symbol"},
-            {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit springen.",hor: "true", imgclass:"symbol"},
-            {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
-            {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
-            {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
-            {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",hor: "true", warn:"Fackel" , bgc:"blue"},
-            {name: "Tempel", Aktion: "Die verschollene Tempelruine.",hor: "true", bgc:"green"},
-            {name: "Fackel", Aktion: "Mit der Fackel kann man durch die Höhlen gehen.",ver: "true", imgclass:"symbol", pagebreak: "pagebreak"},
-            {name: "Fluss", color : "H", Aktion: " Du kannst das Abenteuer mit dem Boot am Fluss verlassen.", warn:"Boot", bgc:"blue"},
-            {name: "Weg", Aktion: "",hor: "true"},
-            {name: "Weg", Aktion: "",hor: "true"},
-            {name: "Weg", Aktion: "",hor: "true", pagebreak: "pagebreak"},
-            {name: "Weg", Aktion: ""},
-            {name: "Weg", Aktion: ""},
-            {name: "Weg", Aktion: "",hor: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",ver: "true"},
-            {name: "Weg", Aktion: "",hor: "true"}
-            ];
-            
-            var initActions = [
-            {name: "Hieroglyphen", Aktion: "Mit dem Tagebuch kannst du die Hieroglyphen entziffenn und den versteckten Eingang zum Tempel finden. Dort findest du die Schriftrolle.",warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green", task: true},
-            {name: "Tagebuch", Aktion: "Das Tagebuch enthält die Aufzeichnungen des Professors. Suche die Hieroglyphen.",ver: "true", imgclass:"symbol", task: true},
-            {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.",hor: "true", imgclass:"symbol", task: true},
-            {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
-            {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle. Du kommst schlechter vorwärts.", task: true, fuss: "-1"},
-            {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true}
-            ];
+        {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+        {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+        {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+        {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit grossen Dingen nicht überqueren. Lege die Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+        {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift",hor: "true"},
+        {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift",ver: "true"},
+        {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift"},
+        {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift"},
+        {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
+        {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
+        {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
+        {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein"},
+        {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie euch.", warn:"Edelstein", pagebreak: "pagebreak"},
+        {name: "Boot", Aktion: "Bring das Boot zum Fluss, um das Abenteuer zu verlassen.", hor: true, imgclass:"symbol"},
+        {name: "Rucksack", Aktion: "Mit dem Rucksack kannst du 3 Dinge mehr tragen.",ver: "true", imgclass:"symbol"},
+        {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",hor: "true", imgclass:"symbol"},
+        {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",hor: "true", imgclass:"symbol"},
+        {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",ver: "true", imgclass:"symbol"},
+        {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",ver: "true", imgclass:"symbol"},
+        {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu uf die Wand.",hor: "true",ver: "true", imgclass:"symbol"},
+        {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",hor: "true", imgclass:"symbol"},
+        {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit auf ein offenes Feld springen.",ver: "true", imgclass:"symbol"},
+        {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit auf ein offenes Feld springen.",hor: "true",ver: "true", imgclass:"symbol"},
+        {name: "Liane", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit auf ein offenes Feld springen.",hor: "true", imgclass:"symbol"},
+        {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
+        {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
+        {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
+        {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",hor: "true", warn:"Fackel" , bgc:"blue"},
+        {name: "Tempel", Aktion: "Die verschollene Tempelruine.",hor: "true", bgc:"green"},
+        {name: "Fackel", Aktion: "Mit der Fackel kann man durch die Höhlen gehen.",ver: "true", imgclass:"symbol", pagebreak: "pagebreak"},
+        {name: "Fluss", color : "H", Aktion: " Du kannst das Abenteuer mit dem Boot am Fluss verlassen.", warn:"Boot", bgc:"blue"},
+        {name: "Weg", Aktion: "",hor: "true"},
+        {name: "Weg", Aktion: "",hor: "true"},
+        {name: "Weg", Aktion: "",hor: "true", pagebreak: "pagebreak"},
+        {name: "Weg", Aktion: ""},
+        {name: "Weg", Aktion: ""},
+        {name: "Weg", Aktion: "",hor: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",ver: "true"},
+        {name: "Weg", Aktion: "",hor: "true"}
+        ];
 
-            var initActionsII = [{name: "Hieroglyphen", Aktion: "Jane kann die Hieroglyphen entziffenn und den versteckten Eingang zum Tempel finden. Dort findest du die Schriftrolle.",warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green", task: true},
-            {name: "Jäger", Aktion: "Der Jäger klaut dir zwei Dinge (deiner Wahl) und bringt sie zum Tempel. Mit der Pistole kannst du das verhindern.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
-            {name: "Pistole", Aktion: "Die Pistole ist alt und hat keine Munition.",hor: "true",ver: "true", imgclass:"symbol", bgc: "gelb"},
-            {name: "Voodoopuppe", Aktion: "Die verlorene Voodoopuppe der Kannibalen.",ver: "true", imgclass:"symbol"},
-            {name: "Tarzan", Aktion: "Jane verliebt sich in Tarzan und bleibt bei ihm. Am Ende fährt sie mit dir über den Fluss zurück.",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
-            {name: "Tagebuch", Aktion: "Das Tagebuch enthält Aufzeichnungen. Lege eine offene Karte zurück in den Stapel und mische diesen.",ver: "true", imgclass:"symbol", task: true},
-            {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.",hor: "true", imgclass:"symbol", task: true},
-            {name: "Elfenbein", Aktion: "Im Elefantenfriedhof findest du Elfenbein. Für den Zugang benötigst du die Machete.",warn:"Machete", win:"Elfenbein", bgcwin:"green", imgclass:"symbol", task: true},
-            {name: "Treibsand", Aktion: "Dein Partner fällt in den Treibsand. Du kannst ihn nur mit einer Liane retten. Bis dahin kannst du keine anderen Dinge nehmen.", warn:"Liane", bgcwin:"green" , bgc:"blue", task: true},
-            {name: "Diamantenmine", color : "H",Aktion: "Du findest in der dunklen Mine grosse Diamenten. Bein Herausholen verlierst du die Fackel.", warn:"Fackel", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true},
-            {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
-            {name: "Karte", color : "H",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true},
-            {name: "Sturm", color : "H",Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true},
-            {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle. Du kommst schlechter vorwärts.", task: true, fuss: "-1"},
-            {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true}
-            ];
+        var initActions = [
+        {name: "Hieroglyphen", Aktion: "Mit dem Tagebuch kannst du die Hieroglyphen entziffenn und den versteckten Eingang zum Tempel finden. Dort findest du die Schriftrolle.",warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green", task: true},
+        {name: "Tagebuch", Aktion: "Das Tagebuch enthält die Aufzeichnungen des Professors. Suche die Hieroglyphen.", imgclass:"symbol", task: true},
+        {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.", imgclass:"symbol", task: true},
+        {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
+        {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle. Du kommst schlechter vorwärts.", task: true, fuss: "-1"}
+        ];
 
-            
-            var start = {name: "Akt I", color : "H", Aktion: "Janes Vater Prof Hampton ist bei der Suche nach der alten Zivilisation Mu verschollen. Jane sucht die Schriftrolle, um ihren Vater wiederzufinden."};
-            var actions = shuffle(initActions);
-            this.cards = shuffle(initcards);
-            var actionIter = arrayLikeIterator(actions);
-            this.cards.splice(0, 0, actionIter.next());
-            this.cards.splice(6, 0, actionIter.next());
-            this.cards.splice(24, 0, start);
-            this.cards.splice(42, 0, actionIter.next());
-            this.cards.splice(48, 0, actionIter.next());
+        var initActionsII = [{name: "Hieroglyphen", Aktion: "Jane kann die Hieroglyphen entziffenn und den versteckten Eingang zum Tempel finden. Dort findest du die Schriftrolle.",warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green", task: true},
+        {name: "Jäger", Aktion: "Der Jäger klaut dir zwei Dinge (deiner Wahl) und bringt sie zum Tempel. Mit der Pistole kannst du das verhindern.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
+        {name: "Pistole", Aktion: "Die Pistole ist alt und hat keine Munition.",hor: "true",ver: "true", imgclass:"symbol", bgc: "gelb"},
+        {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true},
+        {name: "Voodoopuppe", Aktion: "Die verlorene Voodoopuppe der Kannibalen.",ver: "true", imgclass:"symbol"},
+        {name: "Tarzan", Aktion: "Jane verliebt sich in Tarzan und bleibt bei ihm. Am Ende fährt sie mit dir über den Fluss zurück.",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
+        {name: "Tagebuch", Aktion: "Das Tagebuch enthält Aufzeichnungen. Lege eine offene Karte zurück in den Stapel und mische diesen.",ver: "true", imgclass:"symbol", task: true},
+        {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.",hor: "true", imgclass:"symbol", task: true},
+        {name: "Elfenbein", Aktion: "Im Elefantenfriedhof findest du Elfenbein. Für den Zugang benötigst du die Machete.",warn:"Machete", win:"Elfenbein", bgcwin:"green", imgclass:"symbol", task: true},
+        {name: "Treibsand", Aktion: "Dein Partner fällt in den Treibsand. Du kannst ihn nur mit einer Liane retten. Bis dahin kannst du keine anderen Dinge nehmen.", warn:"Liane", bgcwin:"green" , bgc:"blue", task: true},
+        {name: "Diamantenmine", color : "H",Aktion: "Du findest in der dunklen Mine grosse Diamenten. Bein Herausholen verlierst du die Fackel.", warn:"Fackel", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true},
+        {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
+        {name: "Karte", color : "H",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true},
+        {name: "Sturm", color : "H",Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true},
+        {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle. Du kommst schlechter vorwärts.", task: true, fuss: "-1"},
+        {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true}
+        ];
+
+
+        var start = {name: "Akt I", color : "H", Aktion: "Janes Vater Prof Hampton ist bei der Suche nach der alten Zivilisation Mu verschollen. Jane sucht die Schriftrolle, um ihren Vater wiederzufinden."};
+        var actions = shuffle(initActions);
+        this.cards = shuffle(initcards);
+        var actionIter = arrayLikeIterator(actions);
+        this.cards.splice(0, 0, actionIter.next());
+        this.cards.splice(6, 0, actionIter.next());
+        this.cards.splice(24, 0, start);
+        this.cards.splice(42, 0, actionIter.next());
+        this.cards.splice(48, 0, actionIter.next());
       }
-});
+    });
 </script>
 
 </polymer-element>
