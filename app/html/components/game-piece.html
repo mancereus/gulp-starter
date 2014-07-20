@@ -1,7 +1,7 @@
 <link rel="import" href="../lib/polymer/polymer.html">
 <link rel="import" href="../lib/core-icon/core-icon.html">
 <link rel="import" href="../lib/paper-ripple/paper-ripple.html">
-<polymer-element name="game-piece" attributes="img"  >
+<polymer-element name="game-piece" attributes="img imgclass"  >
 <template>
 	<style>
 		:host {
@@ -21,11 +21,19 @@
 			background-color: white;
 			z-index: 2000;
 		}
-		img {
+		:host.bigsymbol {
+			height: 112px;
+		}
+		div.bigsymbol img {
+			background-color: yellow;
+			height: 112px;
+		}
+		div.symbol img {
+			height: 112px;
 		}
 	</style>
-	<div name="piece" class="fab green" draggable="true" on-click="{{clicker}}">
-		<img src="{{img}}">	
+	<div  name="piece" class="fab green {{imgclass}}" draggable="true" on-click="{{clicker}}">
+		<img src="{{img}}" style="width: 120px;"  />	
 	</div>
 </template>
 <script>
