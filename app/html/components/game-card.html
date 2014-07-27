@@ -5,7 +5,7 @@
 <link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
 <link rel="import" href="../lib/voice-elements/dist/voice-player.html">
 <link rel="import" href="game-piece.html">
-<polymer-element name="game-card" attributes="selected horiz vertic symbol imgSrc text titleText">
+<polymer-element name="game-card" attributes="selected horiz vertic symbol imgSrc text titleText cardData">
 <template>
 	<style>
 		:host {
@@ -34,7 +34,7 @@
 			margin: 10px;
 		}
 	</style>
-	<core-pages id="card" on-click="{{ toggle }}" >
+	<core-pages id="card" on-click="{{ toggle }}" on-mouseenter="{{ sendCard }}" >
 	<div><img flex self-stretch src="../img/back.png" style="width: 99%; height: 300px"></div>
 	<div class="card-header" >
 		<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
@@ -63,6 +63,13 @@
 		title: "",
 		text: "",
 		img: "",
+		cardData: [],
+		sendCard: function() {
+			var card = this.$.card;
+			if(card.selected == 1) {
+				this.fire('show-card', {card: this.cardData});
+			}
+		},
 		toggle: function() {
 			var card = this.$.card;
 			if(card.selected == 0) {
@@ -70,8 +77,10 @@
 				this.$.player.speak();
 			} else {
 				this.$.player.cancel();
+				return;
 			}
 			card.selected = 1;//(card.selected + 1) % 2;
+			this.fire('show-card', {card: this.cardData});
 			
 		}
 	});

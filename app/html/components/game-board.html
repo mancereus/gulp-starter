@@ -1,7 +1,7 @@
 <link rel="import" href="../lib/polymer/polymer.html">
 <link rel="import" href="game-card.html">
 
-<polymer-element name="game-board" attributes="cards">
+<polymer-element name="game-board" attributes="cards"  on-show-card="{{showCard}}">
 <template>
   <style>
     :host {
@@ -15,7 +15,7 @@
 
   <div layout horizontal wrap center >
     <template repeat="{{card in cards}}">
-      <game-card horiz="{{card.hor}}" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}"> 
+      <game-card horiz="{{card.hor}}" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}"> 
     </game-card>
   </template>
 </div>
@@ -126,6 +126,11 @@
         this.cards.splice(24, 0, start);
         this.cards.splice(42, 0, actionIter.next());
         this.cards.splice(48, 0, actionIter.next());
+      },
+      showCard:  function(e, details, sender) {
+        //alert ("ok");
+        var infocard = document.getElementById("details");
+        infocard.show(details);
       }
     });
 </script>
