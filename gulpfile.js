@@ -58,7 +58,7 @@ function compileJavaScript() {
   return gulp.src(SRC_JAVASCRIPT_ALL)
   .pipe(jshint())
   .pipe(jshint.reporter(require('jshint-stylish')))
-  .pipe(require("gulp-concat")(MAIN_SCRIPT))
+  //.pipe(require("gulp-concat")(MAIN_SCRIPT))
   .pipe(gulp.dest(DIST_JAVASCRIPT));
 }
 
@@ -139,21 +139,21 @@ gulp.task("update", function(next) {
   var needsUpdate = false;
 
   gulp.src("bower.json")
-    .pipe(gulp.dest("build"))
-    .on("close", function() {
-      gutil.log("close");
-      if (!needsUpdate) {
-        next();
-      }
-    })
-    .on("error", function(error) {
-      gutil.log("error");
-      if (!needsUpdate) {
-        next(error);
-      }
-    })
-    .on("data", function() {
-      gutil.log("data");
+  .pipe(gulp.dest("build"))
+  .on("close", function() {
+    gutil.log("close");
+    if (!needsUpdate) {
+      next();
+    }
+  })
+  .on("error", function(error) {
+    gutil.log("error");
+    if (!needsUpdate) {
+      next(error);
+    }
+  })
+  .on("data", function() {
+    gutil.log("data");
       // updated bower.json
       needsUpdate = true;
       gutil.log("Updating Bower Dependencies");
@@ -172,7 +172,7 @@ gulp.task("update", function(next) {
         next(error);
       });
     })
-  });
+});
 
 
 // Server that serves static content from DIST

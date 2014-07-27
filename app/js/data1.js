@@ -52,23 +52,5 @@
  {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle des Jägers. Du kannst bis zum nächsten verdeckten Eckfeld pro Zug nur 3 Felder weit ziehen.", task: true, fuss: "-1"}
  ];
 
- var initActionsII = [{name: "Hieroglyphen", Aktion: "Jane kann die Hieroglyphen entziffenn und den versteckten Eingang zum Tempel finden. Dort findest du die Schriftrolle.",warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green", task: true},
- {name: "Jäger", Aktion: "Der Jäger klaut dir zwei Dinge (deiner Wahl) und bringt sie zum Tempel. Mit der Pistole kannst du das verhindern.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
- {name: "Pistole", Aktion: "Die Pistole ist alt und hat keine Munition.",hor: "true",ver: "true", imgclass:"symbol", bgc: "gelb"},
- {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true},
- {name: "Voodoopuppe", Aktion: "Die verlorene Voodoopuppe der Kannibalen.",ver: "true", imgclass:"symbol"},
- {name: "Tarzan", Aktion: "Jane verliebt sich in Tarzan und bleibt bei ihm. Am Ende fährt sie mit dir über den Fluss zurück.",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
- {name: "Tagebuch", Aktion: "Das Tagebuch enthält Aufzeichnungen. Lege eine offene Karte zurück in den Stapel und mische diesen.",ver: "true", imgclass:"symbol", task: true},
- {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.",hor: "true", imgclass:"symbol", task: true},
- {name: "Elfenbein", Aktion: "Im Elefantenfriedhof findest du Elfenbein. Für den Zugang benötigst du die Machete.",warn:"Machete", win:"Elfenbein", bgcwin:"green", imgclass:"symbol", task: true},
- {name: "Treibsand", Aktion: "Dein Partner fällt in den Treibsand. Du kannst ihn nur mit einer Liane retten. Bis dahin kannst du keine anderen Dinge nehmen.", warn:"Liane", bgcwin:"green" , bgc:"blue", task: true},
- {name: "Diamantenmine", color : "H",Aktion: "Du findest in der dunklen Mine grosse Diamenten. Bein Herausholen verlierst du die Fackel.", warn:"Fackel", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true},
- {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
- {name: "Karte", color : "H",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true},
- {name: "Sturm", color : "H",Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true},
- {name: "Tierfalle", color : "H",Aktion: "Dein Bein verletzt sich in einer Tierfalle. Du kommst schlechter vorwärts.", task: true, fuss: "-1"},
- {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true}
- ];
-
 
  var start = {name: "Akt I", color : "H", Aktion: "Janes Vater Prof Hampton ist bei der Suche nach der alten Zivilisation Mu verschollen. Jane sucht die Schriftrolle, um ihren Vater wiederzufinden."};
