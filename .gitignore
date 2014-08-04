@@ -3,3 +3,5 @@
 /bower_components/
 /dist/
 .build/
+.sublime-gulp.cache
+3f7de9e2-7572-477e-a97d-3be202bd5913.dmp
