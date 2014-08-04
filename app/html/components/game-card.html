@@ -35,7 +35,7 @@
 		}
 	</style>
 	<core-pages id="card" on-click="{{ toggle }}" on-mouseenter="{{ sendCard }}" >
-	<div><img flex self-stretch src="../img/back.png" style="width: 99%; height: 300px"></div>
+	<div><img flex self-stretch src="../img/back{{cardData.task}}.png" style="width: 99%; height: 300px"></div>
 	<div class="card-header" >
 		<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
 		<div layout vertical center>

@@ -16,7 +16,7 @@
  {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",hor: "true", imgclass:"symbol"},
  {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. ",ver: "true", imgclass:"symbol"},
  {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",ver: "true", imgclass:"symbol"},
- {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu uf die Wand.",ver: "true",imgclass:"symbol"},
+ {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",ver: "true",imgclass:"symbol"},
  {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",hor: "true", imgclass:"symbol"},
  {name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.",hor: "true", imgclass:"symbol"},
  {name: "Fels", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen."},
