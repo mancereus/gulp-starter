@@ -27,15 +27,17 @@
 </template>
 <script>
 	Polymer("game-dice", {	
-		diceValue: "A",
+		diceValue: "",
 		charSet: "ABCDEF",
 		clicker: function(ev) {
-			this.diceValue = this.charSet.charAt(Math.floor(Math.random() * this.charSet.length)) 
+			ev.preventDefault();
+			ev.stopPropagation(); 
 			return false; 
 		},
 		ready: function() {
 			console.log("game-dice ready ");
 			var draggie = new Draggabilly( this );
+			this.diceValue = this.charSet.charAt(Math.floor(Math.random() * this.charSet.length));
 		}
 	});
 </script>

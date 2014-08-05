@@ -47,12 +47,13 @@
 
  var initActions = [
  {name: "Treibsand", Aktion: "Auf der Flucht vor einem Löwen trittst du in Treibsand. Jane kann dich mit einer Liane retten. Bis sie eine Liane zu dir gebracht hat, hat sie eine Zugweite von 5 und kann keine anderen Dinge nehmen.", warn:"Liane", bgcwin:"green" , bgc:"blue", task: true},
- {name: "Jäger", Aktion: "Der Jäger klaut dir alle Artefkate und bringt sie zu seinem Lager. Mit der Pistole kannst du sie ihm dort abnehmen.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
+ {name: "Jäger", Aktion: "Der Jäger klaut dir alle Artefakte und bringt sie zu seinem Lager. Mit der Pistole kannst du sie ihm dort abnehmen.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
  {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Du kannst Sie erst in Akt III befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true},
  {name: "Elfenbein", Aktion: "Im Elefantenfriedhof findest du Elfenbein. Für den Zugang benötigst du die Machete.",warn:"Machete", win:"Elfenbein", bgcwin:"green", imgclass:"symbol", task: true},
  {name: "Diamantenmine", color : "H",Aktion: "Du findest in der dunklen Mine grosse Diamenten. Bein Herausholen verlierst du die Fackel.", warn:"Fackel", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true},
  {name: "Karte", color : "H",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true},
  {name: "Sturm", color : "H",Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true},
+ {name: "Tiger", color : "H",Aktion: "Ein Tiger überrascht euch und jagt euch quer durch den Dschungel auf ein leeres Feld. Lege eine Karte vom Stapel auf dieses Feld.", task: true},
  ];
 
  var initActionsIII = [
