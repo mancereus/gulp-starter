@@ -18,6 +18,8 @@
 			height: 300px;
 			font-size: 1em;
 			font-weight: 300;
+		    page-break-inside: avoid;
+    		-webkit-region-break-inside: avoid; 
 		}
 		.card-header {
 			margin: 3px;
@@ -40,7 +42,7 @@
 		<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
 		<div layout vertical center>
 			<h2>{{titleText}}</h2>
-			<img class="picture" src="img/{{imgSrc}}.png" style="width:60%;height:100px"/>
+			<img class="picture" src="../img/{{imgSrc}}.png" style="width:60%;height:100px"/>
 
 			<div style="width:90%"><p>{{text}}</p></div>
 			<template if="{{ vertic }}">
@@ -55,7 +57,7 @@
 		</div>
 	</div>
 </core-pages>
-<paper-shadow z="2"></paper-shadow>
+<paper-shadow z="1"></paper-shadow>
 </template>
 <script>
 	Polymer("game-card", {
@@ -64,6 +66,9 @@
 		text: "",
 		img: "",
 		cardData: [],
+      ready: function() {
+          this.$.card.selected = this.selected;
+      },
 		sendCard: function() {
 			var card = this.$.card;
 			if(card.selected == 1) {

@@ -3,6 +3,7 @@ path = require("path"),
 gutil = require("gulp-util"),
 rename = require("gulp-rename"),
 pkg = require("./package.json"),
+deploy = require("gulp-gh-pages"),
 changed = require("gulp-changed");
 
 var SRC  = "app";
@@ -104,7 +105,6 @@ gulp.task("dist:html", ["update"], function() {
   var replace = require('gulp-replace');
 
   return gulp.src(SRC_HTML)
-  .pipe(replace(/\.js/g, ".min.js"))
   .pipe(replace(/\.css/g, ".min.css"))
   .pipe(gulp.dest(DIST));
 });
@@ -112,7 +112,9 @@ gulp.task("dist:html", ["update"], function() {
 
 // Copy Bower assets
 gulp.task("copy-bower", ["update"], function() {
-  return gulp.src("bower_components/**")
+  gulp.src("bower_components/*/*")
+  .pipe(gulp.dest(DIST_LIB));
+  return gulp.src("bower_components/*/dist/**")
   .pipe(gulp.dest(DIST_LIB));
 });
 
@@ -219,6 +221,13 @@ gulp.task("help", function(next) {
   next();
 });
 
+var options = { 
+    remoteUrl: "https://github.com/mancereus/mancereus.github.com",
+    branch: "master"};
+gulp.task('deploy', function () {
+    gulp.src("dist/**/*.*")
+        .pipe(deploy(options));
+});
 
 // Default
 gulp.task("default", ["help"]);

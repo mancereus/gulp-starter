@@ -1,7 +1,7 @@
 <link rel="import" href="../lib/polymer/polymer.html">
 <link rel="import" href="game-card.html">
 
-<polymer-element name="game-board" attributes="cards width"  on-show-card="{{showCard}}">
+<polymer-element name="print-board" attributes="cards width"  on-show-card="{{showCard}}">
 <template>
   <style>
     :host {
@@ -12,10 +12,13 @@
     }
   </style>
 
-  <div layout horizontal wrap center >
+  <div id="gameTable" layout horizontal wrap center >
     <template repeat="{{ card, cardIndex in cards}}">
-      <game-card horiz="{{card.hor}}" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}" selected="{{cardIndex}}"> 
+      <game-card horiz="{{card.hor}}" selected="1" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}" selected="{{cardIndex}}"> 
     </game-card>
+      <template if="{{ (cardIndex+1) % 9 == 0 }}">
+      <div class="pagebreak" style="height: 100px;width: 600px;">page-break</div>
+      </template>
   </template>
 </div>
 </template>
@@ -50,7 +53,7 @@
     }
     return false;
   };
-  Polymer('game-board', {
+  Polymer('print-board', {
       // initialize the element's model
       width: "1480px",
       created: function() {
@@ -67,16 +70,23 @@
       ready: function() {
           this.style.width = this.width;
       },
+      domReady: function() {
+          var items = this.$.gameTable.children;
+          var i = items.length;
+
+          while(i--) {
+            if (items[i].tagName === "DIV") {
+              items[i].style.pageBreakBefore="always";
+              items[i].style.pageBreakAfter="always";
+            }
+          }
+
+      },
       openCard:  function(idx) {
         var open = [2,7,12];
         if (open.contains(idx))
           return 1;
         return 0;
-      },
-      showCard:  function(e, details, sender) {
-        //alert ("ok");
-        var infocard = document.getElementById("details");
-        infocard.show(details);
       }
     });
 </script>
