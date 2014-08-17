@@ -12,14 +12,14 @@
     }
   </style>
 
-  <div layout horizontal wrap center >
+  <div id="field" layout horizontal wrap center >
     <template repeat="{{ card, cardIndex in cards}}">
-      <game-card horiz="{{card.hor}}" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}" selected="{{cardIndex}}"> 
+      <game-card imgSrc="{{card.name}}" cardData="{{card}}"> 
     </game-card>
   </template>
 </div>
 </template>
-<script src="../js/data2.js"></script>
+<script src="../js/data1.js"></script>
 <script>
   StopIteration = function () {};
   StopIteration.prototype = new Error();
@@ -66,6 +66,15 @@
       },
       ready: function() {
           this.style.width = this.width;
+          this.$.field.children[9].show();
+          this.$.field.children[13].show();
+          this.$.field.children[17].show();
+          this.$.field.children[19].show();
+          this.$.field.children[25].show();
+          this.$.field.children[31].show();
+          this.$.field.children[33].show();
+          this.$.field.children[41].show();
+          this.$.field.children[37].show();
       },
       openCard:  function(idx) {
         var open = [2,7,12];

@@ -14,7 +14,7 @@
 
   <div id="gameTable" layout horizontal wrap center >
     <template repeat="{{ card, cardIndex in cards}}">
-      <game-card horiz="{{card.hor}}" selected="1" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}" selected="{{cardIndex}}"> 
+      <game-card horiz="{{card.hor}}" selected="1" vertic="{{card.ver}}" symbol="{{card.imgclass}}" imgSrc="{{card.name}}" titleText="{{card.name}}" text="{{card.Aktion}}" cardData="{{card}}" > 
     </game-card>
       <template if="{{ (cardIndex+1) % 9 == 0 }}">
       <div class="pagebreak" style="height: 100px;width: 600px;">page-break</div>

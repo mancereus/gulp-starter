@@ -5,7 +5,7 @@
 <link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
 <link rel="import" href="../lib/voice-elements/dist/voice-player.html">
 <link rel="import" href="game-piece.html">
-<polymer-element name="game-card" attributes="selected horiz vertic symbol imgSrc text titleText cardData">
+<polymer-element name="game-card" attributes=" cardData">
 <template>
 	<style>
 		:host {
@@ -32,27 +32,31 @@
 		}
 		.card-header .picture {
 			width: 70px;
-			border-radius: 50%;
 			margin: 10px;
+		}
+		.card-header .picture.symbol {
+			border-radius: 50%;
+			border: 2px solid green;
+			opacity: 0.5;
 		}
 	</style>
 	<core-pages id="card" on-click="{{ toggle }}" on-mouseenter="{{ sendCard }}" >
 	<div><img flex self-stretch src="../img/back{{cardData.task}}.png" style="width: 99%; height: 300px"></div>
 	<div class="card-header" >
-		<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
+		<voice-player id="player" accent="de-DE" text="{{ cardData.Aktion }}"></voice-player>
 		<div layout vertical center>
-			<h2>{{titleText}}</h2>
-			<img class="picture" src="../img/{{imgSrc}}.png" style="width:60%;height:100px"/>
+			<h2>{{cardData.name}}</h2>
+			<img class="picture {{cardData.imgclass}}" src="../img/{{cardData.name}}.png" style="width:60%;height:100px"/>
 
-			<div style="width:90%"><p>{{text}}</p></div>
-			<template if="{{ vertic }}">
+			<div style="width:90%"><p>{{cardData.Aktion}}</p></div>
+			<template if="{{ cardData.ver }}">
 				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
 			</template>
-			<template if="{{ horiz }}">
+			<template if="{{ cardData.hor }}">
 				<div fit style="top: 266px;"><img src="../img/horiz.jpg" style="height:30px; width: 196px;"alt=""></div>
 			</template>
-			<template if="{{ symbol }}">
-				<game-piece img="../img/{{imgSrc}}.png" imgclass="{{symbol}}"></game-piece>
+			<template if="{{ cardData.imgclass }}">
+				<game-piece img="../img/{{cardData.name}}.png" imgclass="{{cardData.imgclass}}"></game-piece>
 			</template>
 		</div>
 	</div>
@@ -62,9 +66,6 @@
 <script>
 	Polymer("game-card", {
 		selected: "0",
-		title: "",
-		text: "",
-		img: "",
 		cardData: [],
       ready: function() {
           this.$.card.selected = this.selected;
@@ -75,6 +76,10 @@
 				this.fire('show-card', {card: this.cardData});
 			}
 		},
+        show: function() {
+            var card = this.$.card;
+            card.selected = 1;
+        },
 		toggle: function() {
 			var card = this.$.card;
 			if(card.selected == 0) {

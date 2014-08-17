@@ -56,21 +56,5 @@
  {name: "Tiger", color : "H",Aktion: "Ein Tiger überrascht euch und jagt euch quer durch den Dschungel auf ein leeres Feld. Lege eine Karte vom Stapel auf dieses Feld.", task: true},
  ];
 
- var initActionsIII = [
- {name: "Jäger", Aktion: "Der Jäger klaut dir zwei Dinge (deiner Wahl) und bringt sie zum Tempel. Mit der Pistole kannst du das verhindern.",warn:"Pistole", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
- {name: "Voodoopuppe", Aktion: "Die verlorene Voodoopuppe der Kannibalen.",ver: "true", imgclass:"symbol"},
- {name: "Tarzan", Aktion: "Jane verliebt sich in Tarzan und bleibt bei ihm. Am Ende fährt sie mit dir über den Fluss zurück.",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
- {name: "Tagebuch", Aktion: "Das Tagebuch enthält Aufzeichnungen. Lege eine offene Karte zurück in den Stapel und mische diesen.",ver: "true", imgclass:"symbol", task: true},
- {name: "Idol", Aktion: "Mit dem Idol kannst du die Kannibalen verjagen und an Ihnen vorbeilaufen.",hor: "true", imgclass:"symbol", task: true},
- {name: "Elfenbein", Aktion: "Im Elefantenfriedhof findest du Elfenbein. Für den Zugang benötigst du eine Machete. Gib diese ab.",warn:"Machete", win:"Elfenbein", bgcwin:"green", imgclass:"symbol", task: true},
- {name: "Treibsand", Aktion: "Dein Partner fällt in den Treibsand. Du kannst ihn nur mit einer Liane retten. Bis dahin kannst du keine anderen Dinge nehmen.", warn:"Liane", bgcwin:"green" , bgc:"blue", task: true},
- {name: "Diamantenmine", color : "H",Aktion: "Du findest in der dunklen Mine grosse Diamenten. Bein Herausholen verlierst du die Fackel.", warn:"Fackel", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true},
- {name: "Lager", color : "H",Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 leere Dingfelder aus dem Vorrat wieder auffüllen.", warn:"Edelstein", bgc:"green", win:"Edelstein", bgcwin:"green", task: true},
- {name: "Karte", color : "H",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true},
- {name: "Sturm", color : "H",Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true},
- {name: "Kannibalendorf", color : "H",Aktion: "Jane wird von den Kannibalen gefangengenommen. Mit der Voodoopuppe kannst du Jane befreien.", warn:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true}
- ];
-
-
  var start = {name: "Akt II", color : "H", 
  Aktion: "Mit den Hieroglyphen findet ihr die Stelle im Dschungel an der Prof Hampton verschwunden ist. Sucht nach dem Zugang zum verschollenen Tal."};
