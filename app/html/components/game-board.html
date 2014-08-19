@@ -76,11 +76,10 @@
           this.$.field.children[41].show();
           this.$.field.children[37].show();
       },
-      openCard:  function(idx) {
-        var open = [2,7,12];
-        if (open.contains(idx))
-          return 1;
-        return 0;
+      openAll:  function() {
+        for (i=0; i<49; i++) {
+          this.$.field.children[i].show();
+        }
       },
       showCard:  function(e, details, sender) {
         //alert ("ok");

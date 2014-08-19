@@ -14,6 +14,7 @@
     <link rel="import" href="../components/game-help.html">
     <link rel="import" href="../components/game-dice.html">
     <link rel="import" href="../components/game-meeple.html">
+    <link rel="import" href="../lib/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="../components/game-show-details.html">
 
     <link rel="stylesheet" href="../css/main.css">
@@ -33,7 +34,7 @@
 <div class="container" layout horizontal center>
 
   <div layout horizontal start>
-    <game-board/>
+    <game-board id="board"/>
 </div>
 <div layout vertical>
     <h2>Zugweite 2 + Anzahl aufgedeckter Eckfelder</h2>
@@ -67,6 +68,7 @@
   </div>
   <div id="bigCard"style="background-color:white; border: 2px solid black; height:800px; width: 500px">
     <game-show-details id="details" ></game-show-details>
+    <
   </div>
 </div>
 </div>

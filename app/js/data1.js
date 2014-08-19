@@ -27,7 +27,7 @@
  {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
  {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",ver: "true", warn:"Fackel" , bgc:"blue"},
  {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",hor: "true", warn:"Fackel" , bgc:"blue"},
- {name: "Hieroglyphen", Aktion: "Mit dem Tagebuch kann Jane die Hieroglyphen entziffern. Lege das Tagbuch hier ab. Über den Fluss kannst du dann in Akt 2 wechseln.",hor: "true", warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green"},
+ {name: "Hieroglyphen", Aktion: "Mit dem Tagebuch kann Jane die Hieroglyphen entziffern und den Ort finden, an dem ihr Vater verschwunden ist. Lege das Tagbuch hier ab. Über den Fluss kannst du dann in Akt 2 wechseln.",hor: "true", warn:"Jane2", bgc:"blue", win:"Schriftrolle", bgcwin:"green"},
  {name: "Tempel", Aktion: "Die verschollene Tempelruine.",hor: "true", bgc:"green"},
  {name: "Fackel", Aktion: "Mit der Fackel kann man durch die Höhlen gehen.",ver: "true", imgclass:"symbol", pagebreak: "pagebreak"},
  {name: "Fluss", color : "H", Aktion: " Du kannst das Abenteuer mit dem Boot am Fluss verlassen. Hier darfst du beliebige Gegenstände ablegen.", warn:"Boot", bgc:"blue"},
