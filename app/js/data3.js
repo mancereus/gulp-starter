@@ -1,8 +1,8 @@
  var initcards =  [
- {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit 4 Dingen im Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
- {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit 4 Dingen im Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
- {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit 4 Dingen im Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
- {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit 4 Dingen im Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+ {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+ {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+ {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
+ {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", warn:"Edelstein", bgc: "gelb" },
  {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie dich.", warn:"Edelstein"},
  {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie dich.", warn:"Edelstein"},
  {name: "Kannibale", Aktion: "Die Kannibalen verfolgen dich. Du hast das Idol oder gibst einen Gegenstand ab, sonst töten sie dich.", warn:"Edelstein"},
@@ -30,9 +30,9 @@
  {name: "Höhle", Aktion: "Nur mit der Fackel kann man durch die Höhle direkt zu anderen Höhlen gehen.",hor: "true", warn:"Fackel" , bgc:"blue"},
  {name: "Fackel", Aktion: "Mit der Fackel kann man durch die Höhlen gehen.",ver: "true", imgclass:"symbol", pagebreak: "pagebreak"},
  {name: "Pistole", Aktion: "Die Pistole ist alt und hat keine Munition.",hor: "true",ver: "true", imgclass:"symbol", bgc: "gelb"},
- {name: "Weg", Aktion: "",hor: "true"},
- {name: "Weg", Aktion: "",hor: "true"},
- {name: "Weg", Aktion: "",hor: "true", pagebreak: "pagebreak"},
+ {name: "Weg", Aktion: "Jane: Ist das der richtige Weg?",hor: "true"},
+ {name: "Weg", Aktion: "Jack: Hier können wir rasten.",hor: "true"},
+ {name: "Weg", Aktion: "Jane: Hier waren wir doch schon mal.",hor: "true", pagebreak: "pagebreak"},
  {name: "Weg", Aktion: ""},
  {name: "Weg", Aktion: ""},
  {name: "Weg", Aktion: "",hor: "true"},
@@ -46,11 +46,10 @@
  ];
 
  var initActions = [
- {name: "Jäger", Aktion: "Der Jäger hat versucht das Heiligtum der Kannibalen zu stehlen und diesen Frevel mit seinem Leben bezahlt. Die Kannibalen sind sehr wütend und töten jeden den Sie begegnen.", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
+ {name: "Jäger", Aktion: "Der Jäger hat versucht den Schatz der Kannibalen zu stehlen und diesen Frevel mit seinem Leben bezahlt. Die Kannibalen sind sehr wütend und töten jeden den Sie begegnen.", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true},
  {name: "Kannibalen", color : "H", Aktion: "Die Kannibalen sind eigentlich friedliebend und bewachen das Tal. Du kannst ungehindert an Ihnen vorbeilaufen.", win:"Jane2", bgcwin:"green", task: true},
- {name: "Tarzan", Aktion: "Jane trifft auf Tarzan und beide verlieben sich. Sie bleibt bei ihm. ",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
- {name: "Jane", Aktion: "Jane hat sich (doch) in dich verliebt. Sie will bei dir bleiben. ",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
- {name: "Höhle", Aktion: "In der Höhle befindet sich ein Alienraumschiff. Es ist der Schatz der von den Kannibalen verehrt wird. Durch diese Höhle könnt ihr mit der Fackel direkt zu anderen Höhlen ziehen. ",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
+ {name: "Jane", Aktion: "Jane hat sich in dich verliebt. Sie will bei dir bleiben. ",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
+ {name: "Höhle", Aktion: "Die Höhle enthält den Schatz, der von den Kannibalen verehrt wird. Durch diese Höhle könnt ihr mit der Fackel direkt zu anderen Höhlen ziehen. ",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
  {name: "Raumschiff", Aktion: "Da Raumschiff erklärt den Ursprung der Zivilisation Mu. Die Ausserirdischne Besitzer sind alle verschollen. Mit dem Schlüssel könnt ihr das Schiff starten und das Abenteuer beenden.",win:"Fluss", bgcwin:"blue", warn:"Jane2", bgc:"orange", task: true},
  {name: "Prof. Hampton", Aktion: "Janes Vater lebt glücklich und zufrieden bei den Kannibalen. Wenn du ihm beide Kugeln bringst, verlässt er mit euch das Tal.",hor: "true", imgclass:"symbol", task: true}
  ];

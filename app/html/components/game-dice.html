@@ -9,18 +9,18 @@
 			/*cursor: move;*/
 			 float: left;
 			z-index: 2000;
-			width: 33%;
+			width: 80px;
 			max-width: 120px;
-			margin: 1% 1%;
+			margin: 2px;
 		}
 		h1 {
 			width: 90%;
-			height: 18%;
 			border-radius: 10%;
 			color: black;
+			margin: 2px;
 			background-color: white;
 			border: 3px solid black;
-			font-size: 64pt;
+			font-size: 36pt;
 			text-align: center;
 			vertical-align: middle;			
 		}
@@ -33,14 +33,14 @@
 	Polymer("game-dice", {	
 		diceValue: "",
 		charSet: "ABCDEF",
-/*		clicker: function(ev) {
+		clicker: function(ev) {
 			ev.preventDefault();
 			ev.stopPropagation(); 
 			return false; 
 		},
-*/		ready: function() {
+		ready: function() {
 			console.log("game-dice ready ");
-			// var draggie = new Draggabilly( this );
+			var draggie = new Draggabilly( this );
 			this.diceValue = this.charSet.charAt(Math.floor(Math.random() * this.charSet.length));
 		}
 	});

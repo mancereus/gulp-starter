@@ -6,6 +6,7 @@
   <script src="lib/platform/platform.js"> </script>
 
   <link rel="import" href="lib/font-roboto/roboto.html">
+  <link rel="import" href="lib/flip-card/flip-card.html">
   <link rel="import" href="lib/paper-dialog/paper-dialog.html">
   <link rel="import" href="lib/paper-button/paper-button.html">
   <style>
@@ -60,8 +61,13 @@
 <body unresolved touch-action="auto">
   <div class="container">
     <div class="outer card">
-      <div class="inner">
-        <div class="little-box">A</div>
+      <div class="inner">      
+        <div class="little-box">
+          <flip-card>
+            <front>vorne</front>
+            <back>hinten</back>
+          </flip-card>
+        </div>
         <div class="little-box">B</div>
         <div class="little-box">C</div>
         <div class="little-box">D</div>

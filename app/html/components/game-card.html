@@ -3,6 +3,7 @@
 <link rel="import" href="../lib/paper-ripple/paper-ripple.html">
 <link rel="import" href="../lib/paper-shadow/paper-shadow.html">
 <link rel="import" href="../lib/core-drag-drop/core-drag-drop.html">
+<link rel="import" href="../lib/flip-card/flip-card.html">
 <link rel="import" href="../lib/voice-elements/dist/voice-player.html">
 <link rel="import" href="game-piece.html">
 <polymer-element name="game-card" attributes=" cardData">
@@ -32,7 +33,7 @@
 		}
 		.card-header .picture {
 			width: 70px;
-			border: 1px solid black;
+			border: 1px dotted black;
 			margin: 10px;
 		}
 		.card-header .picture.symbol {
@@ -49,7 +50,7 @@
 			<h2>{{cardData.name}}</h2>
 			<img class="picture {{cardData.imgclass}}" src="../img/{{cardData.name}}.png" style="width:60%;height:100px"/>
 
-			<div style="width:90%; font-size: 12px;margin: 1px 32px 1px 5px;">{{cardData.Aktion}}</div>
+			<div style="width:90%; font-size: 12px;margin: 1px 32px 1px 15px;">{{cardData.Aktion}}</div>
 			<template if="{{ cardData.ver }}">
 				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
 			</template>
@@ -91,6 +92,7 @@
 				return;
 			}
 			card.selected = 1;//(card.selected + 1) % 2;
+			card.className = card.className + " clicked";
 			this.fire('show-card', {card: this.cardData});
 			
 		}
