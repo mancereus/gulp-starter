@@ -14,13 +14,15 @@
 
   <div id="field" layout horizontal wrap center >
     <template repeat="{{ card, cardIndex in cards}}">
-      <game-card imgSrc="{{card.name}}" cardData="{{card}}"> 
+      <game-card imgSrc="{{card.name}}" cardData="{{card}}" item="{{card.imgclass}}"> 
     </game-card>
   </template>
 </div>
 </template>
-<script src="../js/data1.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/data3.js"></script>
 <script>
+
   StopIteration = function () {};
   StopIteration.prototype = new Error();
   StopIteration.name = 'StopIteration';
@@ -54,6 +56,7 @@
       // initialize the element's model
       width: "1480px",
       created: function() {
+        initcards.push.apply(initcards,actcards);
 
         var actions = shuffle(initActions);
         this.cards = shuffle(initcards);
