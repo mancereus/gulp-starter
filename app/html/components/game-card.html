@@ -47,7 +47,7 @@
 	<div class="card-header" >
 		<voice-player id="player" accent="de-DE" text="{{ cardData.Aktion }}"></voice-player>
 		<div layout vertical center>
-			<h2>{{cardData.name}}</h2>
+			<h2 >{{cardData.name}}</h2>
 			<template if="{{ cardData.akt }}">
 				<div fit style="left: 5px;top: 12px">
 				<template if="{{ cardData.task }}"><img src="../img/Stern.png" style="width:30px;height: 30px;"alt=""> 
@@ -56,7 +56,7 @@
 			</template>
 			<img class="picture {{cardData.imgclass}}" src="../img/{{cardData.name}}.png" style="width:60%;height:100px"/>
 
-			<div style="width:90%; font-size: 13px;margin: 1px 32px 1px 15px;">{{cardData.Aktion}}</div>
+			<div class="handle" style="width:90%; font-size: 13px;margin: 1px 32px 1px 15px;">{{cardData.Aktion}}</div>
 			<template if="{{ cardData.ver }}">
 				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
 			</template>
@@ -75,8 +75,13 @@
 	Polymer("game-card", {
 		selected: "0",
 		cardData: [],
+		draggie: "",
       ready: function() {
           this.$.card.selected = this.selected;
+          draggie = new Draggabilly( this);
+          // draggie.on( 'dragEnd', function( draggieInstance, event, pointer ) {
+          // 	draggieInstance.disable();
+          // });
       },
 		sendCard: function() {
 			var card = this.$.card;
@@ -84,6 +89,13 @@
 				this.fire('show-card', {card: this.cardData});
 			}
 		},
+        move: function() {
+            this.style.top = (50 - this.offsetTop) + "px";
+            this.style.left = (1600 - this.offsetLeft) + "px";
+        },
+        fix: function() {
+			//draggie.disable();           
+        },
         show: function() {
             var card = this.$.card;
             card.selected = 1;
@@ -100,6 +112,7 @@
 			card.selected = 1;//(card.selected + 1) % 2;
 			card.className = card.className + " clicked";
 			this.fire('show-card', {card: this.cardData});
+			
 			
 		}
 	});

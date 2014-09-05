@@ -78,6 +78,23 @@
           this.$.field.children[33].show();
           this.$.field.children[41].show();
           this.$.field.children[37].show();
+          var startarr = [9,13,17,19,25,31,33,41,37];
+          var questarr = [1,7,43,49];
+        for (var i=1; i <= 49; i++) {
+          if (startarr.contains(i)) {
+            this.$.field.children[i].show();
+            this.$.field.children[i].fix();
+          } else {
+            if (!questarr.contains(i)) {
+              this.$.field.children[i].move();
+            } else {
+              this.$.field.children[i].fix();
+
+            }
+          }
+
+        }
+
       },
       openAll:  function() {
         for (var i=0; i<49; i++) {
