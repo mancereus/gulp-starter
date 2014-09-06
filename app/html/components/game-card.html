@@ -43,7 +43,15 @@
 		}
 	</style>
 	<core-pages id="card" on-click="{{ toggle }}" on-mouseenter="{{ sendCard }}" >
-	<div><img flex self-stretch src="../img/back{{cardData.task}}.png" style="width: 99%; height: 300px"></div>
+	<div>
+		<img flex self-stretch src="../img/back{{cardData.task}}.png" style="width: 99%; height: 300px">
+		<template if="{{ cardData.task }}">
+		<div style="position: absolute; font-size: 64px;font-weight: bold; opacity: 0.5;text-align: center; background-color: white; left: 30px;top: 40px;">
+			Akt {{cardData.akt}}<br/>
+			{{ cardData.order }}.
+		</div>
+		</template>
+	</div>
 	<div class="card-header" >
 		<voice-player id="player" accent="de-DE" text="{{ cardData.Aktion }}"></voice-player>
 		<div layout vertical center>
