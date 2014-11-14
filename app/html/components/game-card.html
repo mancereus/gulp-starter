@@ -68,9 +68,7 @@
 			<template if="{{ cardData.flavour }}">
 			<div class="handle" style="width:90%; font-size: 13px;margin: 1px 32px 1px 15px;font-style:italic;">{{cardData.flavour}}</div>
 			</template>
-			<template if="{{ cardData.level }}">
-			<div class="handle" style="width:90%; font-size: 13px;margin: 50px 32px 1px 35px;font-weight:bold;">Level: {{cardData.level}}</div>
-			</template>
+			<div class="handle" style="width:90%; font-size: 9px;margin: 1px 32px 1px 15px;">{{ cardData.type }} ({{ cardData.akt }} {{cardData.level}})</div>
 			<template if="{{ cardData.ver }}">
 				<div fit style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;"alt=""></div>
 			</template>
