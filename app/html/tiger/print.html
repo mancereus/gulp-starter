@@ -1,27 +1,25 @@
 <!doctype html>
 <html>
-<style>
-html,body {
-  height: 100%;
-  margin: 0;
-  background-color: white;
-  font-family: 'RobotoDraft', sans-serif;
-}
-</style>
-<head>
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      background-color: white;
+      font-family: 'RobotoDraft', sans-serif;
+    }
+  </style>
+  
+  <head>
     <title>Tiger</title>
-    <meta name="viewport"content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="../lib/platform/platform.js"> </script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../lib/platform/platform.js"></script>
     <script src="../js/draggabilly.pkgd.js"></script>
-
     <link rel="import" href="../lib/font-roboto/roboto.html">
     <link rel="import" href="../components/print-board.html">
-
-
-</head>
-    <print-board width="700px"/>
-    <script>
-      function addPageBreak() {
+  </head>
+  <print-board width="700px" />
+  <script>
+    function addPageBreak() {
         var boxes = document.getElementById('gameTable');
         if (boxes == null) 
           return;
@@ -34,7 +32,7 @@ html,body {
     window.addEventListener('polymer-ready', function(e) {
       addPageBreak();
     });
-    
-    </script>
-</body>
+  </script>
+  </body>
+
 </html>
